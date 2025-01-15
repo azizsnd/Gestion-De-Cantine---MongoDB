@@ -13,15 +13,15 @@ GestionDeCantine is a user-friendly platform designed to streamline daily menu m
 ## Technologies Used
 
 - **Frontend**: Angular, TypeScript, HTML, CSS
-- **Backend**: Node.js, Express (Assumed based on typical stack)
-- **Database**: MongoDB (Assumed based on typical stack)
+- **Backend**: Nest js
+- **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
 
 ## Installation
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/JasserGR/Gestion-De-Cantine-FrontEnd.git
+   git clone https://github.com/azizsnd/Gestion-De-Cantine-FrontEnd.git
    cd GestionDeCantine
    ```
 2. **Install dependencies:**:
