@@ -21,8 +21,8 @@ This project is a backend application for managing a canteen system. It is built
 ## Technologies Used
 
 - **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
-- **TypeORM**: An ORM for TypeScript and JavaScript (ES7, ES6, ES5).
-- **MySQL**: A relational database management system.
+- **Mongoose**:An Object Data Modeling (ODM) library for MongoDB and Node.js, providing a schema-based solution to model application data.
+- **MongoDB**: A NoSQL database for storing data in a flexible, JSON-like format.
 - **JWT**: JSON Web Tokens for secure authentication.
 - **Swagger**: API documentation and testing.
 
@@ -31,7 +31,7 @@ This project is a backend application for managing a canteen system. It is built
 ### Prerequisites
 
 - Node.js
-- MySQL
+- MongoDB
 
 ### Installation
 
@@ -51,11 +51,7 @@ This project is a backend application for managing a canteen system. It is built
 4. Configure environment variables:
    - Create a `.env` file in the root directory and add the following variables:
      ```
-     DB_HOST=localhost
-     DB_PORT=3306
-     DB_USERNAME=root
-     DB_PASSWORD=
-     DB_DATABASE=GestionCantine
+     MONGO_URI=mongodb://localhost:27017/GestionCantine
      JWT_SECRET=your_jwt_secret
      JWT_EXPIRATION=1d
      EMAIL_USER=your_email@gmail.com
