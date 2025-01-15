@@ -1,0 +1,62 @@
+<div class="Daily-Menu-Management">
+  <h1 class="daily-title">Daily Menu Management</h1>
+  <div class="search-filter-add">
+    <div class="search-bar">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        placeholder="Search for the dishes..."
+        [(ngModel)]="searchQuery"
+      />
+    </div>
+    <div class="filter-icon" (click)="toggleFilter()">
+      <i class="fas fa-filter"></i>
+    </div>
+  </div>
+
+  <div *ngIf="showFilter" class="filter-bar">
+    <h3>Filter by Type:</h3>
+    <div class="filter-options">
+      <div *ngFor="let type of filterTypes" class="filter-option">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedTypes.includes(type)"
+            (change)="onTypeSelect(type)"
+          />
+          {{ type }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-table">
+    <div class="table-header">
+      <div class="header-item">Dish</div>
+      <div class="header-item">Quantity</div>
+      <div class="header-item">In the Menu</div>
+    </div>
+    <div class="table-body">
+      <div class="table-row" *ngFor="let dish of filteredDishes">
+        <div class="table-cell">{{ dish.name }}</div>
+        <div class="table-cell quantity-div">
+          <span *ngIf="!dish.isEditing">{{ dish.quantity }}</span>
+          <input *ngIf="dish.isEditing" type="number" [(ngModel)]="dish.quantity" class="quantity-input" />
+          <button class="icon-button" (click)="toggleEdit(dish)">
+            <i *ngIf="!dish.isEditing" class="fa-solid fa-pen"></i>
+            <i *ngIf="dish.isEditing" class="fa-solid fa-check"></i>
+          </button>
+        </div>
+        <div class="table-cell">
+          <input type="checkbox" [checked]="dish.checked" (change)="toggleInMenu(dish)" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="menu-title">Current Menu</h1>
+  <div class="dish-grid">
+    <app-dish-card *ngFor="let dish of dailyDish" [imageUrl]="dish.imageUrl" [type]="dish.type"
+      [name]="dish.name"></app-dish-card>
+  </div>
+</div>

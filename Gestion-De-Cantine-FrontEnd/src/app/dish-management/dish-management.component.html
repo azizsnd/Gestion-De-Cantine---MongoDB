@@ -1,0 +1,77 @@
+<div class="dish-management">
+  <div class="top-bar">
+    <h1 class="page-title">Dishes Management</h1>
+    <div class="search-filter-add">
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input
+          type="text"
+          placeholder="Search for the dishes..."
+          [(ngModel)]="searchQuery"
+        />
+      </div>
+      <div class="filter-icon" (click)="toggleFilter()">
+        <i class="fas fa-filter"></i>
+      </div>
+      <button class="add-dish-button" (click)="toggleForm()">
+        <i class="fas fa-plus"></i> Add New Dish
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="showFilter" class="filter-bar">
+    <h3>Filter by Type:</h3>
+    <div class="filter-options">
+      <div *ngFor="let type of filterTypes" class="filter-option">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedTypes.includes(type)"
+            (change)="onTypeSelect(type)"
+          />
+          {{ type }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showForm" class="form-overlay">
+    <div class="form-container">
+      <form (ngSubmit)="onSaveDish()">
+        <h2>{{ isEditMode ? 'Edit Dish' : 'Add New Dish' }}</h2>
+        <div class="form-field">
+          <label for="dishName">Dish Name:</label>
+          <input id="dishName" type="text" [(ngModel)]="newDish.name" name="name" required />
+        </div>
+        <div class="form-field">
+          <label for="dishType">Dish Type:</label>
+          <select id="dishType" [(ngModel)]="newDish.type" name="type" required>
+            <option value="Main Course">Main Course</option>
+            <option value="Appetizers">Appetizers</option>
+            <option value="Desserts">Desserts</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="dishImage">Image URL:</label>
+          <input id="dishImage" type="text" [(ngModel)]="newDish.imageUrl" name="imageUrl" />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="save-btn">{{ isEditMode ? 'Update' : 'Save' }}</button>
+          <button type="button" class="cancel-btn" (click)="toggleForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="dish-grid">
+    <app-dish-card
+      *ngFor="let dish of filteredDishes"
+      [imageUrl]="dish.imageUrl"
+      [type]="dish.type"
+      [name]="dish.name"
+      attribut="dish"
+      (modify)="onModifyDish(dish)"
+      (delete)="onDeleteDish(dish._id)"
+    ></app-dish-card>
+  </div>
+</div>

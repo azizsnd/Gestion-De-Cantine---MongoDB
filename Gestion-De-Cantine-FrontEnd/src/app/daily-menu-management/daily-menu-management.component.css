@@ -1,0 +1,231 @@
+.Daily-Menu-Management {
+  padding: 1rem;
+  max-width: 90%; 
+  margin: 0 auto;
+  box-sizing: border-box; 
+}
+
+.daily-title {
+  text-align: left;
+  font-size: clamp(2rem, 5vw, 4rem); 
+  font-weight: bolder;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.menu-title {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem); 
+  font-weight: bolder;
+  margin-bottom: 1.5rem;
+  color: #1F2D30;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 1rem; 
+  padding: 1rem;
+}
+
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-header,
+.table-row {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-header {
+  background-color: #D68240;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+}
+
+.header-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+}
+
+.table-cell {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem); 
+  color: #222222;
+  font-weight: bold;
+}
+
+.table-cell input[type="checkbox"] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 2px solid #D68240;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.table-cell input[type="checkbox"]:checked {
+  background-color: #D68240;
+  border-color: #D68240;
+}
+
+.table-cell input[type="checkbox"]:checked::after {
+  content: "✔";
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.quantity-div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  outline: none;
+}
+
+.quantity-input:focus {
+  border: 1px solid #D68240;
+  box-shadow: 0 0 5px rgba(214, 130, 64, 0.5);
+}
+
+.search-filter-add {
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #d68240;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+}
+
+.filter-icon {
+  font-size: 1.5rem;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-icon:hover {
+  color: #D68240;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-bar h3 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-option label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  border: 2px solid #D68240;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.filter-option input[type="checkbox"]:checked {
+  background-color: #D68240;
+  border-color: #D68240;
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: white;
+}

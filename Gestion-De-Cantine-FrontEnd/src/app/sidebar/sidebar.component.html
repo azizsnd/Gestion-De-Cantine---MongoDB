@@ -1,0 +1,48 @@
+<div class="sidebar">
+    
+    <div class="sidebar-header">
+      <img src="/images/Logo.png" alt="Logo" class="sidebar-logo" />
+    </div>
+  
+    
+    <ul class="sidebar-menu">
+      <li>
+        <a routerLink="/home" class="sidebar-link">
+          <i class="fas fa-home"></i> 
+          <span>Home</span>
+        </a>
+      </li>
+      <li *ngIf="userRole === 'admin'">
+        <a routerLink="/daily-menu-management" class="sidebar-link">
+          <i class="fas fa-book"></i> 
+          <span>Daily Menu Management</span>
+        </a>
+      </li>
+      <li *ngIf="userRole === 'admin'">
+        <a routerLink="/dish-management" class="sidebar-link">
+          <i class="fas fa-utensils"></i> 
+          <span>Dishes Management</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/dish-rating" class="sidebar-link">
+          <i class="fas fa-star"></i> 
+          <span>Dish Rating</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/about-us" class="sidebar-link">
+          <i class="fas fa-info-circle"></i> 
+          <span>About</span>
+        </a>
+      </li>
+    </ul>
+  
+    
+    <div class="logout-section">
+      <button class="logout-button" (click)="onLogout()">
+        <i class="fas fa-sign-out-alt"></i> 
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>

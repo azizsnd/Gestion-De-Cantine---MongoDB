@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Sora', sans-serif;
+}
+.cdk-overlay-container {
+    z-index: 2000 !important;
+  }
+
+  
+  

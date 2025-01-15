@@ -1,0 +1,7 @@
+<app-sidebar *ngIf="showSidebar"></app-sidebar>
+
+<div class="main-content" [class.sidebar-hidden]="!showSidebar">
+  <div [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

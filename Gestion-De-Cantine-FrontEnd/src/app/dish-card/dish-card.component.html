@@ -1,0 +1,96 @@
+<div class="dish-card"
+[ngClass]="{ 'clickable': attribut === 'rating' }"
+(click)="attribut === 'rating' ? openPopup() : null"
+>
+  <img
+    [src]="imageUrl"
+    alt="Dish Image"
+    class="dish-image"
+    (error)="onImageError($event)"
+  />
+  <div class="icon-container">
+    <div class="outer-circle">
+      <div class="inner-circle">
+        <i class="fa-solid {{ typeIconClass }} type-icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="dish-info">
+    <p class="dish-type">Type: {{ type }}</p>
+    <h3 class="dish-name">{{ name }}</h3>
+  </div>
+
+  <div *ngIf="attribut === 'dish'" class="action-buttons">
+    <button class="icon-button" (click)="onModify()">
+      <i class="fa-solid fa-pen"></i>
+    </button>
+    <button class="icon-button" (click)="onDelete()">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+  <div *ngIf="attribut === 'rating'" class="dish-rating">
+    <span *ngFor="let star of stars; let i = index" class="star-container">
+      <span class="star-empty">★</span>
+      <span class="star-filled" [ngStyle]="{ width: getStarWidth(i) }">★</span>
+    </span>
+  </div>
+</div>
+<!-- Popup -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <div class="header">
+      <div class="title">
+        <label>Feedbacks</label>
+        <button *ngIf="userRole == 'student'" class="add-feedback-button" (click)="toggleForm()" >
+          <i class="fas fa-plus"></i> Add
+        </button>
+      </div>
+      <i class="fa-solid fa-times close-icon" (click)="closePopup()"></i>
+    </div>
+    <div class="feedback-container">
+      <app-feedback-card
+        *ngFor="let rating of ratings"
+        [nameUser]="rating.idUser.userName"
+        [feedback]="rating.feedback"
+        [cardType]="'popup'"
+        [rating]="rating.nbStars"
+      ></app-feedback-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showForm" class="form-overlay">
+  <div class="form-container">
+    <form (ngSubmit)="onSaveFeedback()">
+      <h2>New Feedback</h2>
+      <div class="form-field">
+        <label for="rating">Rating:</label>
+        <input
+          id="nbStars"
+          type="number"
+          [(ngModel)]="newFeedback.nbStars"
+          name="nbStars"
+          min="1"
+          max="5"
+          required
+        />
+      </div>
+      <div class="form-field">
+        <label for="feedback">Feedback:</label>
+        <textarea
+          id="feedback"
+          [(ngModel)]="newFeedback.feedback"
+          name="feedback"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="save-btn">Save</button>
+        <button type="button" class="cancel-btn" (click)="toggleForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
